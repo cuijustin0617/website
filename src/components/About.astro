@@ -1,0 +1,32 @@
+---
+// Component for the About Me section
+const aboutText = "Fourth-year Engineering Science (Machine Intelligence) student at the University of Toronto who blends research and engineering—publishing on retrieval-augmented recommender systems, prototyping diffusion models at Vector Institute, and shipping production ML pipelines at Modiface.";
+// Interests array and related paragraph will be removed from the HTML output below
+---
+
+<section id="about" class="container">
+  <div class="about-content">
+    <!-- Profile picture placeholder removed from here -->
+    <div class="about-text">
+      <p set:html={aboutText} />
+      {/* "Some things I'm interested in:" and the interests list removed */}
+      {/* "My DMs are open..." paragraph removed */}
+    </div>
+  </div>
+</section>
+
+<style>
+  #about {
+    padding-top: 0; /* Reduce top padding if it immediately follows header */
+    border-top: none; /* Remove top border if header has bottom border and they are close */
+  }
+  .about-content {
+    /* Styles for about-content can remain simple if it's just one text block */
+  }
+  .about-text p {
+    margin-bottom: 0; /* Remove bottom margin if it's the only paragraph */
+    line-height: 1.7; 
+    color: var(--text-color); 
+  }
+  /* Styles for ul and ul li removed as the list is gone */
+</style> 

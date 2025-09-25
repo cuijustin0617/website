@@ -1,0 +1,342 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
+import Publications from '../components/Publications.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "Justin Cui - Personal Website";
+
+// Profile data (consolidated from Header and About)
+const personalName = "Justin Cui";
+const profilePicSrc = "/profile.png";
+const title = "UofT EngSci + ML Researcher";
+const aboutText = `<strong>Academic:</strong> I am a top student from UofT <a href="https://www.youtube.com/watch?v=BcPO4yhWSUg&t=33s" target="_blank" style="color: #1e40af !important; text-decoration: underline;">EngSci</a>, Machine Intelligence.<br><br><strong>Research:</strong> I like to solve real-world problems with AI/ML. I have done research on LLMs, causal inference, Recommender systems and Information Retrieval, diffusion models, etc. with Professor <a href="https://zhijing-jin.com/fantasy/" target="_blank" style="color: #1e40af !important; text-decoration: underline;">Zhijing Jin</a>, Professor <a href="https://www.matter.toronto.edu/basic-content-page/about-alan" target="_blank" style="color: #1e40af !important; text-decoration: underline;">Alan Aspuru-Guzik</a>, Professor <a href="https://d3m.mie.utoronto.ca/members/ssanner/" target="_blank" style="color: #1e40af !important; text-decoration: underline;">Scott Sanner</a>, Professor <a href="https://www.dgp.toronto.edu/~tovi/" target="_blank" style="color: #1e40af !important; text-decoration: underline;">Tovi Grossman</a>.<br><br><strong>Engineering:</strong> I have built end-to-end ML training pipelines, prepared and augmented large-scale datasets for training, deployed models in production environments, optimized model inference for real-time applications, and automated ML workflows with CI/CD pipelines.`;
+const briefBio = "Fourth-year Engineering Science (Machine Intelligence) student at the University of Toronto who blends research and engineering—publishing on retrieval-augmented recommender systems, prototyping diffusion models at Vector Institute, and shipping production ML pipelines at Modiface.";
+
+const socialLinks = [
+  { href: "https://scholar.google.com/citations?hl=en&user=ijAuOhwAAAAJ", text: "Google Scholar", icon: "📄" },
+  { href: "https://github.com/cuijustin0617", text: "GitHub", icon: "<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-github\"><path d=\"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22\"></path></svg>" },
+  { href: "https://www.linkedin.com/in/justin-cui-b7b654181/", text: "LinkedIn", icon: "<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-linkedin\"><path d=\"M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z\"></path><rect x=\"2\" y=\"9\" width=\"4\" height=\"12\"></rect><circle cx=\"4\" cy=\"4\" r=\"2\"></circle></svg>" }
+];
+---
+
+<Layout title={pageTitle}>
+	<div class="app-layout">
+		<!-- Left Sidebar -->
+		<aside class="left-sidebar">
+			<div class="profile-section">
+				<div class="profile-pic-large">
+					<img src={profilePicSrc} alt={personalName} />
+				</div>
+				<div class="profile-info">
+					<h1>Hi, I'm <span class="highlight">{personalName}</span>,</h1>
+					<p class="title">{title}.</p>
+					<p class="bio" set:html={aboutText}></p>
+					<div class="social-links">
+						{socialLinks.map(link => (
+							<a href={link.href} title={link.text} target="_blank" rel="noopener noreferrer">
+								<span set:html={link.icon}></span>
+								{link.text}
+							</a>
+						))}
+					</div>
+					<p class="email-note">
+						Contact: <a href="mailto:justin.cui@mail.utoronto.ca" class="inline-link">justin.cui@mail.utoronto.ca</a>
+					</p>
+				</div>
+			</div>
+		</aside>
+
+		<!-- Right Content -->
+		<main class="right-content">
+			<div class="scrollable-content">
+				<Experience />
+				<section id="publications" class="content-section">
+					<h2 class="section-title">Publications</h2>
+					<Publications />
+				</section>
+				<Projects />
+			</div>
+		</main>
+	</div>
+	<Footer />
+</Layout>
+
+<style>
+	/* Prevent page scrolling */
+	html, body {
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.app-layout {
+		display: block;
+		height: 100vh;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 2rem;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.left-sidebar {
+		position: fixed;
+		top: 2rem;
+		left: 50%;
+		transform: translateX(-600px);
+		width: 400px;
+		height: calc(100vh - 4rem);
+		overflow-y: auto;
+		padding-right: 2rem;
+		z-index: 10;
+	}
+
+	/* Auto-hiding subtle scrollbar for left sidebar */
+	.left-sidebar {
+		scrollbar-width: none; /* Firefox */
+		-ms-overflow-style: none; /* IE/Edge */
+	}
+
+	.left-sidebar::-webkit-scrollbar {
+		width: 3px;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+
+	.left-sidebar:hover::-webkit-scrollbar {
+		opacity: 1;
+	}
+
+	.left-sidebar::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	.left-sidebar::-webkit-scrollbar-thumb {
+		background: rgba(0, 0, 0, 0.15);
+		border-radius: 3px;
+	}
+
+	.left-sidebar::-webkit-scrollbar-thumb:hover {
+		background: rgba(0, 0, 0, 0.3);
+	}
+
+	.profile-section {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.profile-pic-large {
+		width: 180px;
+		height: 180px;
+		border-radius: 50%;
+		overflow: hidden;
+		margin: 0 auto;
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+	}
+
+	.profile-pic-large img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.profile-info {
+		text-align: left;
+	}
+
+	.profile-info h1 {
+		font-size: 2rem;
+		font-weight: 400;
+		margin-bottom: 0.5rem;
+		line-height: 1.2;
+		color: var(--text-color);
+	}
+
+	.highlight {
+		color: #2563eb;
+		font-weight: 600;
+	}
+
+	.title {
+		font-size: 1.5rem;
+		font-weight: 400;
+		margin-bottom: 1.2rem;
+		color: var(--text-color);
+	}
+
+	.bio {
+		font-size: 1rem;
+		line-height: 1.6;
+		color: var(--gray-dark);
+		margin-bottom: 1.5rem;
+	}
+
+	.social-links {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 0.4rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.social-links a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.4rem;
+		color: var(--text-color);
+		text-decoration: none;
+		font-size: 0.8rem;
+		padding: 0.3rem 0.5rem;
+		border: 1px solid var(--gray-light);
+		border-radius: 5px;
+		transition: all 0.2s ease;
+		min-height: 32px;
+		white-space: nowrap;
+	}
+
+	.social-links a:hover {
+		background-color: var(--gray-light);
+		border-color: var(--gray-dark);
+		transform: translateY(-1px);
+	}
+
+	.social-links a svg {
+		width: 18px;
+		height: 18px;
+	}
+
+	.email-note {
+		font-size: 0.85rem;
+		color: var(--gray-dark);
+		margin-bottom: 0.4rem;
+	}
+
+	.inline-link {
+		color: #2563eb;
+		text-decoration: underline;
+	}
+
+	.inline-link:hover {
+		text-decoration: none;
+	}
+
+	/* Override global link color specifically for intro links */
+	.bio a.intro-link,
+	a.intro-link {
+		color: #2563eb !important;
+		text-decoration: underline !important;
+		transition: color 0.2s ease !important;
+		/* Override CSS variables */
+		--link-color: #2563eb !important;
+	}
+
+	.bio a.intro-link:hover,
+	a.intro-link:hover {
+		color: #1d4ed8 !important;
+		text-decoration: underline !important;
+		--link-color: #1d4ed8 !important;
+	}
+
+	/* Additional nuclear selectors */
+	.profile-info .bio a[class*="intro-link"],
+	.profile-section .bio a[href*="zhijing-jin"],
+	.profile-section .bio a[href*="matter.toronto"],
+	.profile-section .bio a[href*="d3m.mie.utoronto"],
+	.profile-section .bio a[href*="dgp.toronto"],
+	.profile-section .bio a[href*="youtube"] {
+		color: #2563eb !important;
+		text-decoration: underline !important;
+	}
+
+	.right-content {
+		margin-left: 440px;
+		height: calc(100vh - 4rem);
+		position: relative;
+	}
+
+	.scrollable-content {
+		height: 100%;
+		overflow-y: auto;
+		padding-right: 1rem;
+	}
+
+	/* Very subtle scrollbar for right content */
+	.scrollable-content::-webkit-scrollbar {
+		width: 2px;
+	}
+
+	.scrollable-content::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	.scrollable-content::-webkit-scrollbar-thumb {
+		background: rgba(0, 0, 0, 0.08);
+		border-radius: 2px;
+	}
+
+	.scrollable-content::-webkit-scrollbar-thumb:hover {
+		background: rgba(0, 0, 0, 0.15);
+	}
+
+	.content-section {
+		padding: 1.5rem 0;
+		border-bottom: 1px solid var(--gray-light);
+	}
+
+	.content-section:last-child {
+		border-bottom: none;
+	}
+
+	/* Responsive Design */
+	@media (max-width: 768px) {
+		.app-layout {
+			flex-direction: column;
+			padding: 1rem;
+			gap: 2rem;
+			height: auto;
+			overflow: visible;
+		}
+
+		.left-sidebar {
+			position: static;
+			transform: none;
+			left: auto;
+			width: auto;
+			padding-right: 0;
+			height: auto;
+			overflow-y: visible;
+		}
+
+		.right-content {
+			margin-left: 0;
+			height: auto;
+		}
+
+		.profile-pic-large {
+			width: 120px;
+			height: 120px;
+		}
+
+		.profile-info h1,
+		.title {
+			font-size: 1.5rem;
+		}
+
+		.social-links {
+			grid-template-columns: 1fr;
+			gap: 0.4rem;
+		}
+
+		.social-links a {
+			justify-content: flex-start;
+			padding: 0.5rem 0.75rem;
+		}
+
+		.scrollable-content {
+			height: auto;
+			overflow-y: visible;
+		}
+	}
+</style> 

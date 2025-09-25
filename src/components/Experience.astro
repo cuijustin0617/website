@@ -1,0 +1,195 @@
+---
+const experiences = [
+  {
+    logoPlaceholder: "<img src='/vector.jpg' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>",
+    company: "Vector Institute, Jinesis Lab",
+    role: "ML Research Intern",
+    dates: "2025-Present",
+    description: "Supervised by: Professor Zhijing Jin\n\nWorking on LLM+Causal Inference research"
+  },
+  {
+    logoPlaceholder: "<img src='/dgp6.png' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>",
+    company: "DGP Lab, UofT",
+    role: "AI Research Intern",
+    dates: "2025-Present",
+    description: "Supervised by: Professor Tovi Grossman\n\nWorking on human centered AI agents"
+  },
+  {
+    logoPlaceholder: "<img src='/vector.jpg' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>",
+    company: "Vector Institute, Matter Lab",
+    role: "ML Research Intern",
+    dates: "2025-Present",
+    description: "Supervised by: Professor Alán Aspuru-Guzik\n\nWorking on applying score based generative models on ARC problems"
+  },
+  {
+    logoPlaceholder: "<img src='/modi.jpeg' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>",
+    company: "Modiface",
+    role: "MLE Intern",
+    dates: "2024-2025",
+    description: "Built Stable Diffusion data generation pipeline, converted in-house computer vision models to different frameworks, built prototype applied computer vision beauty solutions."
+  },
+  {
+    logoPlaceholder: "<img src='/uoft.png' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>",
+    company: "D3M, UofT",
+    role: "AI Research Intern",
+    dates: "2023-Present",
+    description: "Supervised by: Professor Scott Sanner\n\nBuilt one the first LLM-powered RAG chatbots, proposed a semi-structured framework for personalized RAG conversational recommender."
+  },
+  {
+    logoPlaceholder: "<img src='/utspan.jpg' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>",
+    company: "UTSPAN",
+    role: "Data Analyst",
+    dates: "2023",
+    description: "Analyzed and visualized data from professional leagues using statistical and ML approaches."
+  },
+  {
+    logoPlaceholder: "<img src='/voith.png' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>",
+    company: "Voith Hydro",
+    role: "SWE Intern",
+    dates: "2022",
+    description: "built a infopoint for >200 engineers' daily use; automated calculations and uploading of engineering metrics."
+  }
+];
+---
+
+<section id="experience" class="experience-section">
+  <h2 class="section-title">Experience</h2>
+  <div class="experience-list">
+    {experiences.map((exp, index) => (
+      <details class="experience-item" open={index === 0}> {/* First item open by default */}
+        <summary>
+          <div class="summary-header">
+            <div class="logo-placeholder" set:html={exp.logoPlaceholder}></div>
+            <div class="title-block">
+              <span class="company-role-line">
+                <span class="company">{exp.company}</span>
+                <span class="role">{exp.role}</span>
+                <span class="dates">({exp.dates})</span>
+              </span>
+            </div>
+          </div>
+          <span class="arrow"></span>
+        </summary>
+        <div class="description">
+          <p class="description-text">{exp.description}</p>
+          <!-- You can add more detailed lists or paragraphs here -->
+        </div>
+      </details>
+    ))}
+  </div>
+</section>
+
+<style>
+  .experience-section {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  
+  .experience-section:last-child {
+    border-bottom: none;
+  }
+
+  /* h2 is now styled globally by .section-title */
+  /* Removed local h2 style */
+
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem; /* Tighter gap for a more connected list */
+  }
+  .experience-item {
+    border: none; /* Remove border from item */
+    border-radius: 0; /* Remove border-radius from item */
+    background-color: var(--background);
+  }
+  .experience-item summary {
+    padding: 0.6rem 0; /* Slightly reduced padding */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Push arrow to the right */
+    cursor: pointer;
+    list-style: none; 
+    border-bottom: 1px solid var(--gray-light); /* Border like Jae Park */
+  }
+  .experience-item:last-of-type summary {
+      /* border-bottom: none; Optional: remove border for last item summary if desired */
+  }
+  .experience-item summary::-webkit-details-marker { 
+    display: none;
+  }
+  .summary-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem; /* Adjusted gap */
+  }
+  .logo-placeholder {
+    font-size: 1rem; /* Smaller logo/icon */
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gray-light);
+    border-radius: 4px;
+    flex-shrink: 0;
+    color: var(--text-color);
+  }
+  .title-block {
+    display: flex;
+    align-items: baseline;
+  }
+  .company-role-line {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .company {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-color);
+  }
+  .role {
+    font-size: 0.9rem;
+    color: var(--gray-dark);
+  }
+  .dates {
+    font-size: 0.85rem;
+    color: var(--gray-dark);
+  }
+  .arrow {
+    width: 9px; /* Smaller arrow */
+    height: 9px;
+    border-right: 1.5px solid var(--gray-dark);
+    border-bottom: 1.5px solid var(--gray-dark);
+    transform: rotate(45deg);
+    transition: transform 0.2s ease-in-out;
+    margin-left: 0.75rem; 
+  }
+  details[open] > summary .arrow {
+    transform: rotate(-135deg);
+  }
+  .description {
+    padding: 0.6rem 0 0.8rem 0; 
+    margin-top: 0.4rem;
+    font-size: 0.9rem; /* Slightly smaller description */
+    color: var(--gray-dark);
+    line-height: 1.55;
+    overflow: hidden; /* Hide content that overflows max-height */
+    max-height: 0; /* Collapsed by default */
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out, margin 0.3s ease-in-out; /* Smooth transition */
+  }
+
+  details[open] > .description {
+    max-height: 20rem; /* Adjust as needed to fit content, can be a large value */
+    /* Padding and margin are already set, ensure they are part of the transition or set explicitly if needed */
+  }
+
+  .description p {
+    margin: 0;
+  }
+
+  .description-text {
+    white-space: pre-line;
+  }
+</style> 
