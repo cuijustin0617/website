@@ -1,50 +1,54 @@
 ---
 const baseUrl = import.meta.env.BASE_URL || '/';
+const getImageUrl = (imageName) => {
+  if (baseUrl === '/') return `/${imageName}`;
+  return `${baseUrl}${imageName}`;
+};
 const experiences = [
   {
-    logoPlaceholder: `<img src='${baseUrl}vector.jpg' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>`,
+    logoPlaceholder: `<img src='${getImageUrl('vector.jpg')}' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>`,
     company: "Vector Institute, Jinesis Lab",
     role: "ML Research Intern",
     dates: "2025-Present",
     description: "Supervised by: Professor Zhijing Jin\n\nWorking on LLM+Causal Inference research"
   },
   {
-    logoPlaceholder: `<img src='${baseUrl}dgp6.png' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>`,
+    logoPlaceholder: `<img src='${getImageUrl('dgp6.png')}' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>`,
     company: "DGP Lab, UofT",
     role: "AI Research Intern",
     dates: "2025-Present",
     description: "Supervised by: Professor Tovi Grossman\n\nWorking on human centered AI agents"
   },
   {
-    logoPlaceholder: `<img src='${baseUrl}vector.jpg' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>`,
+    logoPlaceholder: `<img src='${getImageUrl('vector.jpg')}' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>`,
     company: "Vector Institute, Matter Lab",
     role: "ML Research Intern",
     dates: "2025-Present",
     description: "Supervised by: Professor Alán Aspuru-Guzik\n\nWorking on applying score based generative models on ARC problems"
   },
   {
-    logoPlaceholder: `<img src='${baseUrl}modi.jpeg' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>`,
+    logoPlaceholder: `<img src='${getImageUrl('modi.jpeg')}' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>`,
     company: "Modiface",
     role: "MLE Intern",
     dates: "2024-2025",
     description: "Built Stable Diffusion data generation pipeline, converted in-house computer vision models to different frameworks, built prototype applied computer vision beauty solutions."
   },
   {
-    logoPlaceholder: `<img src='${baseUrl}uoft.png' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>`,
+    logoPlaceholder: `<img src='${getImageUrl('uoft.png')}' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>`,
     company: "D3M, UofT",
     role: "AI Research Intern",
     dates: "2023-Present",
     description: "Supervised by: Professor Scott Sanner\n\nBuilt one the first LLM-powered RAG chatbots, proposed a semi-structured framework for personalized RAG conversational recommender."
   },
   {
-    logoPlaceholder: `<img src='${baseUrl}utspan.jpg' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>`,
+    logoPlaceholder: `<img src='${getImageUrl('utspan.jpg')}' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>`,
     company: "UTSPAN",
     role: "Data Analyst",
     dates: "2023",
     description: "Analyzed and visualized data from professional leagues using statistical and ML approaches."
   },
   {
-    logoPlaceholder: `<img src='${baseUrl}voith.png' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>`,
+    logoPlaceholder: `<img src='${getImageUrl('voith.png')}' alt='Your Company Logo' style='width:100%; height:100%; object-fit:contain;'>`,
     company: "Voith Hydro",
     role: "SWE Intern",
     dates: "2022",
