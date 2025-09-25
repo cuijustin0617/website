@@ -4,4 +4,7 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://cuijustin0617.github.io',
   base: '/website',
+  build: {
+    assets: '_astro'
+  }
 }); 
