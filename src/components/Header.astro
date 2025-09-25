@@ -2,7 +2,9 @@
 // Component for the header section
 const personalName = "Justin Cui"; // Placeholder - CHANGE THIS!
 const location = "Toronto"; // Placeholder - ADD YOUR LOCATIONS
-const profilePicSrc = "/profile.png"; // Placeholder - Add your profile picture to public/ and update path
+// Ensure image URL respects BASE_URL (for GitHub Pages)
+const baseUrl = import.meta.env.BASE_URL || '/';
+const profilePicSrc = baseUrl.endsWith('/') ? `${baseUrl}profile.png` : `${baseUrl}/profile.png`;
 
 const navLinks = [
   { href: "#about", text: "About" },
