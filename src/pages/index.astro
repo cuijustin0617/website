@@ -9,10 +9,10 @@ const pageTitle = "Justin Cui - Personal Website";
 
 // Profile data (consolidated from Header and About)
 const personalName = "Justin Cui";
-const baseUrl = import.meta.env.BASE_URL || '/';
+// Fix: ensure there's a slash between BASE_URL and imageName
 const getImageUrl = (imageName) => {
-  if (baseUrl === '/') return `/${imageName}`;
-  return `${baseUrl}${imageName}`;
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  return baseUrl.endsWith('/') ? `${baseUrl}${imageName}` : `${baseUrl}/${imageName}`;
 };
 const profilePicSrc = getImageUrl('profile.png');
 const title = "UofT EngSci + ML Researcher";
