@@ -69,10 +69,18 @@ const socialLinks = [
 </Layout>
 
 <style>
-	/* Prevent page scrolling */
+	/* Prevent page scrolling on desktop, allow on mobile */
 	html, body {
 		height: 100%;
 		overflow: hidden;
+	}
+	
+	/* Override for mobile devices */
+	@media (max-width: 768px) {
+		html, body {
+			height: auto;
+			overflow: visible;
+		}
 	}
 
 	.app-layout {
@@ -294,29 +302,34 @@ const socialLinks = [
 		border-bottom: none;
 	}
 
-	/* Responsive Design */
+	/* Responsive Design for Mobile */
 	@media (max-width: 768px) {
 		.app-layout {
+			display: flex;
 			flex-direction: column;
 			padding: 1rem;
-			gap: 2rem;
+			gap: 1.5rem;
 			height: auto;
+			min-height: 100vh;
 			overflow: visible;
+			max-width: 100%;
 		}
 
 		.left-sidebar {
 			position: static;
 			transform: none;
 			left: auto;
-			width: auto;
+			width: 100%;
 			padding-right: 0;
 			height: auto;
 			overflow-y: visible;
+			margin-bottom: 1rem;
 		}
 
 		.right-content {
 			margin-left: 0;
 			height: auto;
+			width: 100%;
 		}
 
 		.profile-pic-large {
@@ -324,24 +337,43 @@ const socialLinks = [
 			height: 120px;
 		}
 
-		.profile-info h1,
-		.title {
+		.profile-info h1 {
 			font-size: 1.5rem;
+		}
+
+		.title {
+			font-size: 1.3rem;
+		}
+
+		.bio {
+			font-size: 0.9rem;
 		}
 
 		.social-links {
 			grid-template-columns: 1fr;
-			gap: 0.4rem;
+			gap: 0.5rem;
+			margin-bottom: 1rem;
 		}
 
 		.social-links a {
 			justify-content: flex-start;
 			padding: 0.5rem 0.75rem;
+			font-size: 0.9rem;
 		}
 
 		.scrollable-content {
 			height: auto;
 			overflow-y: visible;
+			padding-right: 0;
+		}
+
+		.content-section {
+			padding: 1rem 0;
+		}
+
+		/* Ensure touch scrolling works smoothly on iOS */
+		body {
+			-webkit-overflow-scrolling: touch;
 		}
 	}
 </style> 
