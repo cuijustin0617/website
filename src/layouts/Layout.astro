@@ -3,26 +3,100 @@ import '../styles/global.css';
 
 export interface Props {
 	title: string;
+	description?: string;
+	keywords?: string;
+	image?: string;
 }
 
-const { title } = Astro.props;
+const { 
+	title, 
+	description = "Justin Cui - UofT Engineering Science student and ML researcher working on LLMs, causal inference, recommender systems, and diffusion models with top professors.",
+	keywords = "Justin Cui, University of Toronto, EngSci, Machine Learning, AI Research, LLM, Causal Inference, Recommender Systems, Vector Institute, DGP Lab, ML Engineer",
+	image = "profile.png"
+} = Astro.props;
+
 // Ensure assets respect the configured base URL (GitHub Pages)
 const rawBase = import.meta.env.BASE_URL || '/';
 const baseHref = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 const faviconHref = `${baseHref}favicon.svg`;
+const imageUrl = `https://cuijustin0617.github.io/${image}`;
+const canonicalUrl = "https://cuijustin0617.github.io/";
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Personal Website" />
+		
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
+		<meta name="author" content="Justin Cui" />
+		<meta name="robots" content="index, follow" />
+		<meta name="language" content="English" />
+		
+		<!-- Viewport -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		
+		<!-- Canonical URL -->
+		<link rel="canonical" href={canonicalUrl} />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={imageUrl} />
+		<meta property="og:site_name" content="Justin Cui" />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalUrl} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={imageUrl} />
+		
+		<!-- Structured Data (JSON-LD) -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Justin Cui",
+			"url": "https://cuijustin0617.github.io/",
+			"image": "https://cuijustin0617.github.io/profile.png",
+			"jobTitle": "ML Research Intern",
+			"worksFor": [
+				{
+					"@type": "Organization",
+					"name": "Vector Institute"
+				},
+				{
+					"@type": "Organization", 
+					"name": "University of Toronto"
+				}
+			],
+			"alumniOf": {
+				"@type": "Organization",
+				"name": "University of Toronto",
+				"department": "Engineering Science"
+			},
+			"email": "justin.cui@mail.utoronto.ca",
+			"sameAs": [
+				"https://github.com/cuijustin0617",
+				"https://www.linkedin.com/in/justin-cui-b7b654181/",
+				"https://scholar.google.com/citations?hl=en&user=ijAuOhwAAAAJ"
+			],
+			"knowsAbout": ["Machine Learning", "Artificial Intelligence", "Large Language Models", "Causal Inference", "Recommender Systems", "Diffusion Models"],
+			"description": "Fourth-year Engineering Science student at University of Toronto specializing in Machine Intelligence, conducting research on LLMs, causal inference, and recommender systems."
+		}
+		</script>
+		
 		<!-- Ensure all relative asset URLs resolve under the configured base -->
 		<base href={baseHref} />
 		<link rel="icon" type="image/svg+xml" href={faviconHref} />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
 	</head>
 	<body>
 		<slot />

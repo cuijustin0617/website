@@ -5,7 +5,9 @@ import Projects from '../components/Projects.astro';
 import Publications from '../components/Publications.astro';
 import Footer from '../components/Footer.astro';
 
-const pageTitle = "Justin Cui - Personal Website";
+const pageTitle = "Justin Cui - ML Researcher | UofT EngSci | Vector Institute";
+const pageDescription = "Justin Cui - Fourth-year Engineering Science student at University of Toronto conducting ML research on LLMs, causal inference, and recommender systems at Vector Institute and DGP Lab.";
+const pageKeywords = "Justin Cui, University of Toronto, EngSci, Machine Learning, AI Research, Vector Institute, DGP Lab, LLM, Causal Inference, Recommender Systems, Diffusion Models, ML Engineer";
 
 // Profile data (consolidated from Header and About)
 const personalName = "Justin Cui";
@@ -26,7 +28,12 @@ const socialLinks = [
 ];
 ---
 
-<Layout title={pageTitle}>
+<Layout 
+	title={pageTitle}
+	description={pageDescription}
+	keywords={pageKeywords}
+	image="profile.png"
+>
 	<div class="app-layout">
 		<!-- Left Sidebar -->
 		<aside class="left-sidebar">
