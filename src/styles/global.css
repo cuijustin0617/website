@@ -22,6 +22,15 @@ body {
   font-size: 0.96rem; /* Slightly reduced base font size */
 }
 
+/* Mobile Safari scrolling support */
+html, body { height: 100%; }
+@media (max-width: 768px) {
+  html, body {
+    overflow-y: auto; /* ensure root can scroll */
+    -webkit-overflow-scrolling: touch; /* momentum scroll on iOS */
+  }
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0 0 1rem 0;
   font-weight: 700;

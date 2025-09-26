@@ -85,7 +85,8 @@ const socialLinks = [
 
 	.app-layout {
 		display: block;
-		height: 100vh;
+		height: 100vh; /* fallback */
+		height: 100svh; /* mobile-safe viewport */
 		max-width: 1200px;
 		margin: 0 auto;
 		padding: 2rem;
@@ -99,7 +100,8 @@ const socialLinks = [
 		left: 50%;
 		transform: translateX(-600px);
 		width: 400px;
-		height: calc(100vh - 4rem);
+		height: calc(100vh - 4rem); /* fallback */
+		height: calc(100svh - 4rem); /* mobile-safe viewport */
 		overflow-y: auto;
 		padding-right: 2rem;
 		z-index: 10;
@@ -265,13 +267,15 @@ const socialLinks = [
 
 	.right-content {
 		margin-left: 440px;
-		height: calc(100vh - 4rem);
+		height: calc(100vh - 4rem); /* fallback */
+		height: calc(100svh - 4rem); /* mobile-safe viewport */
 		position: relative;
 	}
 
 	.scrollable-content {
 		height: 100%;
 		overflow-y: auto;
+		-webkit-overflow-scrolling: touch; /* momentum scroll on iOS */
 		padding-right: 1rem;
 	}
 
@@ -363,7 +367,8 @@ const socialLinks = [
 
 		.scrollable-content {
 			height: auto;
-			overflow-y: visible;
+			overflow-y: auto; /* ensure a scroll container exists */
+			-webkit-overflow-scrolling: touch;
 			padding-right: 0;
 		}
 
