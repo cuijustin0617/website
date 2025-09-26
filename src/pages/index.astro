@@ -65,8 +65,10 @@ const socialLinks = [
 			<div class="scrollable-content">
 				<Experience />
 				<section id="publications" class="content-section">
-					<h2 class="section-title">Publications</h2>
-					<Publications />
+					<div class="section-box">
+						<h2 class="section-title">Publications</h2>
+						<Publications />
+					</div>
 				</section>
 				<Projects />
 			</div>
@@ -313,6 +315,13 @@ const socialLinks = [
 		border-bottom: none;
 	}
 
+	.section-box {
+		border-radius: 20px;
+		padding: 2rem;
+		border: 1px solid rgba(37, 99, 235, 0.2);
+		box-shadow: 0 1px 3px rgba(37, 99, 235, 0.05);
+	}
+
 	/* Responsive Design for Mobile */
 	@media (max-width: 768px) {
 		.app-layout {
@@ -381,6 +390,11 @@ const socialLinks = [
 
 		.content-section {
 			padding: 1rem 0;
+		}
+
+		.section-box {
+			padding: 1.5rem;
+			border-radius: 16px;
 		}
 
 		/* Ensure touch scrolling works smoothly on iOS */

@@ -17,8 +17,9 @@ const projects = [
 ---
 
 <section id="projects" class="projects-section">
-  <h2 class="section-title">Projects</h2>
-  <div class="project-list">
+  <div class="section-box">
+    <h2 class="section-title">Projects</h2>
+    <div class="project-list">
     {projects.map(project => (
       <div class="project-item">
         <h3>
@@ -31,6 +32,7 @@ const projects = [
         </div>
       </div>
     ))}
+    </div>
   </div>
 </section>
 
@@ -42,6 +44,13 @@ const projects = [
   
   .projects-section:last-child {
     border-bottom: none;
+  }
+
+  .section-box {
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.05);
   }
 
   /* h2 is now styled globally by .section-title */
@@ -114,5 +123,13 @@ const projects = [
     padding: 0.25rem 0.6rem;
     border-radius: 4px; /* Less rounded tags */
     font-size: 0.75rem;
+  }
+
+  /* Mobile responsive styles for section box */
+  @media (max-width: 768px) {
+    .section-box {
+      padding: 1.5rem;
+      border-radius: 16px;
+    }
   }
 </style> 

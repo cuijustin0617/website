@@ -58,8 +58,9 @@ const experiences = [
 ---
 
 <section id="experience" class="experience-section">
-  <h2 class="section-title">Experience</h2>
-  <div class="experience-list">
+  <div class="section-box">
+    <h2 class="section-title">Experience</h2>
+    <div class="experience-list">
     {experiences.map((exp, index) => (
       <details class="experience-item" open={index === 0 || index === 1}> {/* Vector and DGP items open by default */}
         <summary>
@@ -81,6 +82,7 @@ const experiences = [
         </div>
       </details>
     ))}
+    </div>
   </div>
 </section>
 
@@ -92,6 +94,13 @@ const experiences = [
   
   .experience-section:last-child {
     border-bottom: none;
+  }
+
+  .section-box {
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.05);
   }
 
   /* h2 is now styled globally by .section-title */
@@ -196,5 +205,13 @@ const experiences = [
 
   .description-text {
     white-space: pre-line;
+  }
+
+  /* Mobile responsive styles for section box */
+  @media (max-width: 768px) {
+    .section-box {
+      padding: 1.5rem;
+      border-radius: 16px;
+    }
   }
 </style> 
