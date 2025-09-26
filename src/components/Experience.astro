@@ -61,7 +61,7 @@ const experiences = [
   <h2 class="section-title">Experience</h2>
   <div class="experience-list">
     {experiences.map((exp, index) => (
-      <details class="experience-item" open={index === 0}> {/* First item open by default */}
+      <details class="experience-item" open={index === 0 || index === 1}> {/* Vector and DGP items open by default */}
         <summary>
           <div class="summary-header">
             <div class="logo-placeholder" set:html={exp.logoPlaceholder}></div>
